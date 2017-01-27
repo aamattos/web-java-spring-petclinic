@@ -1,7 +1,6 @@
 [![Contribute](https://codenvy.com/factory/resources/codenvy-contribute.svg)](https://codenvy.com/f?id=euyeok50b3104deb)
 
 ### Available contribution workflows
-### PRUEBA ANDRES
 
 Factory | Name | Description
 --- | --- | ---
@@ -19,7 +18,7 @@ Factory | Name | Description
 Insert a comment.
 ## What does it look like?
 -spring-petclinic has been deployed here on cloudfoundry: http://demo-spring-petclinic.cfapps.io/
-
+- Prueba Andres
 
 ## Understanding the Spring Petclinic application with a few diagrams
 <a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
