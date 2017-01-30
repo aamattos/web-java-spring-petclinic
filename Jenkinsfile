@@ -26,5 +26,7 @@ node {
   //sh "git push ${pom.artifactId}-${version}"
   // we should also release the staging repo, if we had stashed the 
   //details of the staging repository identifier it would be easy
- 
+ stage 'QA'
+ sh "${mvnHome}/bin/mvn sonar:sonar"
+
 }
