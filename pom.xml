@@ -450,10 +450,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	  <distributionManagement>
-	    <repository>
-	      <id>maven-snapshots</id>
-	    </repository>
-	  </distributionManagement>
 	<url>demopetclinic</url>
 </project>
