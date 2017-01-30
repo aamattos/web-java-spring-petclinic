@@ -19,7 +19,6 @@ node {
   stage ('QA'){
     withSonarQubeEnv('SonarQube Server') {
       // requires SonarQube Scanner for Maven 3.2+
-      def mvnHome = tool 'maven-3.3.9'
       sh '${mvnHome}/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
     }
   }
