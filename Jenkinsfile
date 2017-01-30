@@ -1,6 +1,6 @@
 node {
   // Mark the code checkout 'stage'....
-  stage 'Checkout'
+  stage 'Checkout'{
   // Get some code from a GitHub repository
  
   git url: 'https://github.com/aamattos/web-java-spring-petclinic'
@@ -16,15 +16,16 @@ node {
   //sh "${mvnHome}/bin/mvn compile"
   //stage 'Unit Tests'
   //sh "${mvnHome}/bin/mvn test"
+  } 
   stage ('QA'){
     // requires SonarQube Scanner 2.8+
 //    def scannerHome = tool 'SonarQube Scanner 2.8';
 //    withSonarQubeEnv('SonarQube Server') {
 //      sh "${scannerHome}/bin/sonar-scanner"
 //    }
-//    sh "${mvnHome}/bin/mvn sonar:sonar"
+    sh "${mvnHome}/bin/mvn sonar:sonar"
   }
-  stage 'Build'
+  stage ('Build'){
   // Run the maven build this is a release that keeps the development version 
   // unchanged and uses Jenkins to provide the version number uniqueness
   sh "${mvnHome}/bin/mvn clean install -DskipTests"
@@ -38,5 +39,5 @@ node {
   //sh "git push ${pom.artifactId}-${version}"
   // we should also release the staging repo, if we had stashed the 
   //details of the staging repository identifier it would be easy
-
+  }
 }
