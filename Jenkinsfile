@@ -7,18 +7,22 @@ node {
   }
 
   stage ('Compile'){
-  sh "${mvnHome}/bin/mvn compile"
+//  sh "${mvnHome}/bin/mvn compile"
   } 
 
   stage ('QA'){
-    sh "${mvnHome}/bin/mvn sonar:sonar"
+//    sh "${mvnHome}/bin/mvn sonar:sonar"
   }
 
   stage ('Build'){
-    sh "${mvnHome}/bin/mvn clean install -DskipTests"
+//    sh "${mvnHome}/bin/mvn clean install -DskipTests"
   }
 
-  stage ('Upload'){
-    sh "${mvnHome}/bin/mvn deploy -DskipTests"
+  stage ('Release'){
+//    sh "${mvnHome}/bin/mvn deploy -DskipTests"
+  }  
+  
+    stage ('Deploy'){
+    curl --upload-file target\petclinic.war "http://admin:admin@localhost:8082/manager/deploy?path=/&update=true"
   }  
 }
