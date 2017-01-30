@@ -22,7 +22,7 @@ node {
 //    withSonarQubeEnv('SonarQube Server') {
 //      sh "${scannerHome}/bin/sonar-scanner"
 //    }
-    sh "${mvnHome}/bin/mvn sonar:sonar"
+//    sh "${mvnHome}/bin/mvn sonar:sonar"
   }
   stage 'Build'
   // Run the maven build this is a release that keeps the development version 
