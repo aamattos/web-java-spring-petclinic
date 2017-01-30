@@ -12,6 +12,16 @@ node {
   //def pom = readMavenPom file: 'pom.xml'
   //def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
   // Mark the code build 'stage'....
+  stage 'Compile'
+  // Run the maven build this is a release that keeps the development version 
+  // unchanged and uses Jenkins to provide the version number uniqueness
+  sh "${mvnHome}/bin/mvn compile"
+  stage 'Unit Tests'
+  // Run the maven build this is a release that keeps the development version 
+  // unchanged and uses Jenkins to provide the version number uniqueness
+  sh "${mvnHome}/bin/mvn test"
+  stage 'QA'
+  sh "${mvnHome}/bin/mvn sonar:sonar"
   stage 'Build'
   // Run the maven build this is a release that keeps the development version 
   // unchanged and uses Jenkins to provide the version number uniqueness
@@ -26,7 +36,5 @@ node {
   //sh "git push ${pom.artifactId}-${version}"
   // we should also release the staging repo, if we had stashed the 
   //details of the staging repository identifier it would be easy
- stage 'QA'
- sh "${mvnHome}/bin/mvn sonar:sonar"
 
 }
