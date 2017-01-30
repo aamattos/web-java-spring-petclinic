@@ -16,8 +16,12 @@ node {
   sh "${mvnHome}/bin/mvn compile"
   //stage 'Unit Tests'
   //sh "${mvnHome}/bin/mvn test"
-  stage 'QA'
-  sh "${mvnHome}/bin/mvn sonar:sonar"
+  stage ('QA'){
+    withSonarQubeEnv('SonarQube Server') {
+      // requires SonarQube Scanner for Maven 3.2+
+      sh '${mvnHome}/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+    }
+  }
   stage 'Build'
   // Run the maven build this is a release that keeps the development version 
   // unchanged and uses Jenkins to provide the version number uniqueness
