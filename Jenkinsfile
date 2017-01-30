@@ -6,19 +6,19 @@ node {
   sh "git clean -f && git reset --hard origin/mysql"
   }
 
-//  stage ('Compile'){
-//  sh "${mvnHome}/bin/mvn compile"
-//  } 
+  stage ('Compile'){
+  sh "${mvnHome}/bin/mvn compile"
+  } 
 
-//  stage ('QA'){
-//    sh "${mvnHome}/bin/mvn sonar:sonar"
-//  }
+  stage ('QA'){
+    sh "${mvnHome}/bin/mvn sonar:sonar"
+  }
 
-//  stage ('Build'){
-//    sh "${mvnHome}/bin/mvn clean install -DskipTests"
-//  }
+  stage ('Build'){
+    sh "${mvnHome}/bin/mvn clean install -DskipTests"
+  }
 
-  stage ('Package'){
+  stage ('Upload'){
     sh "${mvnHome}/bin/mvn deploy -DskipTests"
   }  
 }
