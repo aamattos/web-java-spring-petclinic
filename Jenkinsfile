@@ -1,4 +1,5 @@
 node {
+  def mvnHome = tool 'maven-3.3.9'  
   // Mark the code checkout 'stage'....
   stage ('Checkout'){
   // Get some code from a GitHub repository
@@ -17,7 +18,6 @@ node {
   //sh "${mvnHome}/bin/mvn test"
   } 
   stage ('QA'){
-    def mvnHome = tool 'maven-3.3.9'
     // requires SonarQube Scanner 2.8+
 //    def scannerHome = tool 'SonarQube Scanner 2.8';
 //    withSonarQubeEnv('SonarQube Server') {
