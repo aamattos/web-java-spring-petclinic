@@ -12,8 +12,8 @@ node {
   //def pom = readMavenPom file: 'pom.xml'
   //def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
   // Mark the code build 'stage'....
-  stage 'Compile'
-  sh "${mvnHome}/bin/mvn compile"
+  //stage 'Compile'
+  //sh "${mvnHome}/bin/mvn compile"
   //stage 'Unit Tests'
   //sh "${mvnHome}/bin/mvn test"
   stage ('QA'){
