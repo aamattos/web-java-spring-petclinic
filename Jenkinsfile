@@ -1,6 +1,6 @@
 node {
   // Mark the code checkout 'stage'....
-  stage 'Checkout'{
+  stage ('Checkout'){
   // Get some code from a GitHub repository
  
   git url: 'https://github.com/aamattos/web-java-spring-petclinic'
