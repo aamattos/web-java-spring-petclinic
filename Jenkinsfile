@@ -18,10 +18,11 @@ node {
   //sh "${mvnHome}/bin/mvn test"
   stage ('QA'){
     // requires SonarQube Scanner 2.8+
-    def scannerHome = tool 'SonarQube Scanner 2.8';
-    withSonarQubeEnv('SonarQube Server') {
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
+//    def scannerHome = tool 'SonarQube Scanner 2.8';
+//    withSonarQubeEnv('SonarQube Server') {
+//      sh "${scannerHome}/bin/sonar-scanner"
+//    }
+    sh "${mvnHome}/bin/mvn sonar:sonar"
   }
   stage 'Build'
   // Run the maven build this is a release that keeps the development version 
