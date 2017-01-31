@@ -7,23 +7,23 @@ node {
   }
 
   stage ('Compile'){
-//  sh "${mvnHome}/bin/mvn compile"
+    sh "${mvnHome}/bin/mvn compile"
   } 
 
   stage ('QA'){
-//    sh "${mvnHome}/bin/mvn sonar:sonar"
+    sh "${mvnHome}/bin/mvn sonar:sonar"
   }
 
   stage ('Build'){
-//    sh "${mvnHome}/bin/mvn clean install -DskipTests"
+    sh "${mvnHome}/bin/mvn clean install -DskipTests"
   }
 
   stage ('Release'){
-//    sh "${mvnHome}/bin/mvn deploy -DskipTests"
+    sh "${mvnHome}/bin/mvn deploy -DskipTests"
   }  
   
     stage ('Deploy'){
-      sh "${mvnHome}/bin/mvn tomcat7:deploy"
+      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests"
 //    sh "curl --upload-file target/petclinic.war 'http://jenkins:jenkins@dev-machine:8888/manager/text/deploy?path=/petclinic&update=true'"
   }  
 }
