@@ -23,6 +23,7 @@ node {
   }  
   
     stage ('Deploy'){
-    sh "curl --upload-file target/petclinic.war 'http://jenkins:jenkins@dev-machine:8888/manager/text/deploy?path=/petclinic&update=true'"
+      sh "${mvnHome}/bin/mvn tomcat8:deploy"
+//    sh "curl --upload-file target/petclinic.war 'http://jenkins:jenkins@dev-machine:8888/manager/text/deploy?path=/petclinic&update=true'"
   }  
 }
