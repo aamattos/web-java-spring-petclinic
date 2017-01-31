@@ -2,8 +2,8 @@ node {
   def mvnHome = tool 'maven-3.3.9'  
   
   stage ('Checkout'){
-  git url: 'https://github.com/aamattos/web-java-spring-petclinic'
-  sh "git clean -f && git reset --hard origin/mysql"
+//  git url: 'https://github.com/aamattos/web-java-spring-petclinic'
+//  sh "git clean -f && git reset --hard origin/mysql"
   }
 
   stage ('Compile'){
@@ -23,6 +23,6 @@ node {
   }  
   
     stage ('Deploy'){
-      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests -e"
+      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests -e -X"
   }  
 }
