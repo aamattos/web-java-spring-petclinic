@@ -15,14 +15,15 @@ node {
   }
 
   stage ('Build'){
-    sh "${mvnHome}/bin/mvn clean install -DskipTests"
+//    sh "${mvnHome}/bin/mvn clean install -DskipTests"
   }
 
   stage ('Release'){
-    sh "${mvnHome}/bin/mvn deploy -DskipTests"
+  //  sh "${mvnHome}/bin/mvn deploy -DskipTests"
   }  
   
     stage ('Deploy'){
-      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests"
+//      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests"
+      sh "curl --upload-file target/petclinic-1.0.0-SNAPSHOT.war 'http://jenkins:jenkins@dev-machine:8888/manager/text/deploy?path=/petclinic&update=true'"
   }  
 }
