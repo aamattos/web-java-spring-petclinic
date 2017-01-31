@@ -23,7 +23,6 @@ node {
   }  
   
     stage ('Deploy'){
-//      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests"
-      sh "curl --upload-file target/petclinic-1.0.0-SNAPSHOT.war 'http://jenkins:jenkins@localhost:8888/manager/text/deploy?path=/petclinic&update=true'"
+      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests"
   }  
 }
