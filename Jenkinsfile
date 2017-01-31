@@ -23,6 +23,6 @@ node {
   }  
   
     stage ('Deploy'){
-      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests"
+      sh "${mvnHome}/bin/mvn tomcat7:deploy -DskipTests -e"
   }  
 }
