@@ -23,6 +23,6 @@ node {
   }  
   
     stage ('Deploy'){
-    sh "curl --upload-file target/petclinic.war 'http://admin:admin@localhost:8888/manager/deploy?path=/petclinic&update=true'"
+    sh "curl --upload-file target/petclinic.war 'http://admin:admin@dev-machine:8888/manager/deploy?path=/petclinic&update=true'"
   }  
 }
