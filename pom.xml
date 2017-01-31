@@ -449,7 +449,6 @@
 				 <configuration>  
 				  <url>http://10.180.254.242:8888/manager/text</url>  
 				  <server>TomcatDevServer</server>
-				  <path>/petclinic</path>
 				  <username>jenkins</username>  
 				  <password>jenkins</password>   
 				 </configuration>   
