@@ -1,5 +1,5 @@
-//node('jenkins-slave-maven-totta') {
-node('maven') {
+node('jenkins-slave-maven-totta') {
+
   stage ('Checkout'){
 	checkout scm
   }
