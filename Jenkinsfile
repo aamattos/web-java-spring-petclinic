@@ -5,7 +5,7 @@ node('jenkins-slave-maven-totta') {
   }
 
   stage ('Compile'){
-    sh "mvn compile"
+    sh "mvn -X compile"
   }
 
   stage ('QA'){
