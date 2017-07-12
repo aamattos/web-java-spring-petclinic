@@ -21,7 +21,7 @@ node('jenkins-slave-maven-totta') {
 
   }
 
-  stage ('Release'){
+  stage ('Publish'){
     sh "mvn clean deploy -DskipTests"
   }  
   
