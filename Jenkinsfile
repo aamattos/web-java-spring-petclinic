@@ -4,10 +4,11 @@ node('jenkins-slave-maven-totta') {
 	checkout scm
   }
 
+/*
   stage ('Compile'){
     sh "mvn  compile"
   }
-
+*/
   stage ('QA'){
 
     parallel(UnitTest: {
