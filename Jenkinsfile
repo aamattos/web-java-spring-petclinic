@@ -18,7 +18,7 @@ mavenTemplate {
 			 sh 'mvn test'
 			}, SonarQube: {
 			withSonarQubeEnv('SonarQube Totta') {
-			  sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.host.url=http://172.30.196.65:9000'
+			  sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.host.url=http://sonarqube.alm-dev.svc:9000'
 			}
 			})
 		
