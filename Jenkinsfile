@@ -1,4 +1,4 @@
-@GrabResolver(name='public', root='http://nexus-alm.tottapaas.totta.dev.corp/repository/maven-public', m2compatible='true' )
+@GrabResolver(name='public', root='https://nexus-alm-dev.tottapaas.totta.dev.corp/repository/maven-public', m2compatible='true' )
 @Grab(group='org.postgresql', module='postgresql', version='9.4-1205-jdbc42')
 import groovy.sql.Sql;
 
