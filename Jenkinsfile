@@ -2,12 +2,18 @@
 mavenTemplate {
 	
 	node('maven') {
+
+			stage ('postgresql test'){
+				Class.forName("com.postgresql.jdbc.Driver")
+				def sql = Sql.newInstance("jdbc:postgresql://PDTOALMD.TOTTA.DEV.CORP:60145/gitlab-dev", "alm","password", "com.postgresql.jdbc.Driver")
+				def rows = sql.execute "select count(*) from users;"
+				echo rows.dump()
+			}
 		
 		  stage ('Checkout'){
 			checkout scm
 		  }
-		
-		
+				
 		  stage ('Compile'){
 			sh "mvn  compile"
 		  }
