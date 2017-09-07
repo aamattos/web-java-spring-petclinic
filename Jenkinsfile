@@ -1,5 +1,6 @@
 // https://mvnrepository.com/artifact/org.postgresql/postgresql
 @Grapes(
+		@GrabResolver(name='artifact', root='https://mvnrepository.com/')
     @Grab(group='org.postgresql', module='postgresql', version='9.4-1205-jdbc42')
 )
 import groovy.sql.Sql;
