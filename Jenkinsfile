@@ -1,5 +1,5 @@
 @GrabResolver(name='gotest', root='https://nexus-alm-dev.tottapaas.totta.dev.corp/repository/gotest', m2compatible='true' )
-@Grab(group='org.postgresql', module='postgresql', version='9.4-1205-jdbc42')
+@Grab(module='postgresql-9.4-1205-jdbc42.jar')
 import groovy.sql.Sql;
 
 mavenTemplate {
