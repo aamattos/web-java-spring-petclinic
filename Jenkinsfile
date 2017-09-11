@@ -3,16 +3,7 @@ mavenTemplate {
 	
 	node('maven') {
 
-			stage ('postgresql test'){
-//				Class.forName("org.postgresql.Driver")
-//				def dbUrl      = "jdbc:postgresql://PDTOALMD.TOTTA.DEV.CORP:60145/gitlab-dev"
-//				def dbUser     = "alm"
-//				def dbPassword = "password"
-//				def dbDriver   = "org.postgresql.Driver"				
-//				def sql = Sql.newInstance(dbUrl, dbUser, dbPassword, dbDriver)				
-//				def rows = sql.execute "select count(*) from users;"
-//				echo rows.dump()
-				
+			stage ('postgresql test'){				
 				testSQL{
 					dbUrl = "jdbc:postgresql://PDTOALMD.TOTTA.DEV.CORP:60145/gitlab-dev"
 					dbUser = "alm"
