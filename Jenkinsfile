@@ -43,6 +43,8 @@ mavenTemplate {
 		  }
 		
 		  stage ('Publish'){
+			sh "whereis mvn"  
+			  
 			sh "mvn clean deploy -DskipTests"
 		  }
 		  
