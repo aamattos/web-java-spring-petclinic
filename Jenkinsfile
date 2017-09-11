@@ -1,10 +1,7 @@
 // https://mvnrepository.com/artifact/org.postgresql/postgresql
-@Grapes(
-	@GrabResolver(name='artifact', root='https://mvnrepository.com/')
-)
-@Grapes(
-  @Grab(group='org.postgresql', module='postgresql', version='9.4-1205-jdbc42')
-)
+@GrabResolver(name='public', root='http://nexus:8081/repository/maven-public', m2compatible='true' )
+@Grab(group='org.postgresql', module='postgresql', version='9.4-1205-jdbc42')
+
 import groovy.sql.Sql;
 
 mavenTemplate {
