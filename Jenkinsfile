@@ -1,22 +1,3 @@
-postgresqlTemplate {
-	
-	node('postgresql') {
-		
-		stage ('postgresql test'){				
-			testSQL{
-				dbUrl = "jdbc:postgresql://PDTOALMD.TOTTA.DEV.CORP:60145/gitlab-dev"
-				dbUser = "alm"
-				dbPassword = "password"
-				dbDriver = "org.postgresql.Driver"
-				dbQuery = "select count(*) from users;"
-			}
-			
-		}
-	
-	}
-	
-}
-
 mavenTemplate {
 	
 	node('maven') {
