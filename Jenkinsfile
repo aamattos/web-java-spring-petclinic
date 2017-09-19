@@ -3,6 +3,10 @@ mavenTemplate {
 	
 	node('maven') {
 		
+		  def settings = sh(returnStdout: true, script: "cat /root/.m2/settings.xml")
+		  
+		  echo "settings.xml contents: ${settings}"
+		
 		  stage ('Checkout'){
 			checkout scm
 		  }
