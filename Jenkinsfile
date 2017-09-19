@@ -1,31 +1,28 @@
-import pt.alm.util.maven.MavenPipeline
 
 mavenTemplate {
 	
 	node('maven') {
-		
-		  def mvnPipeline = new MavenPipeline()
 		
 		  stage ('Checkout'){
 			checkout scm
 		  }
 				
 		  stage ('Compile'){
-			mvnPipeline.compile()
+			mavenPipeline.compile()
 		  }
 		
 		  stage ('QA'){
 		
 			parallel(UnitTest: {
-				mvnPipeline.test()
+				mavenPipeline.test()
 			}, SonarQube: {
-				mvnPipeline.sonarqube()
+				mavenPipeline.sonarqube()
 			})
 		
 		  }
 		
 		  stage ('Publish'){
-			mvnPipeline.publish()
+			mavenPipeline.publish()
 		  }
 		  
 		  stage ('Deploy'){
