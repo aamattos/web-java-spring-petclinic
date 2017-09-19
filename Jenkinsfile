@@ -3,9 +3,9 @@ mavenTemplate {
 	
 	node('maven') {
 		
-		  def jenkins_password = sh(returnStdout: true, script: "cat /root/.m2/jenkins_password")
+		  def whoami = sh(returnStdout: true, script: "id")
 		  
-		  echo "jenkins_password: ${jenkins_password}"
+		  echo "whoami: ${whoami}"
 		
 		  stage ('Checkout'){
 			checkout scm
