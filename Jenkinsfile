@@ -1,13 +1,17 @@
+import pt.alm.util.maven.MavenPipeline
+
 mavenTemplate {
 	
 	node('maven') {
+		
+		  def mvnPipeline = new MavenPipeline()
 		
 		  stage ('Checkout'){
 			checkout scm
 		  }
 				
 		  stage ('Compile'){
-			sh "mvn  compile"
+			mvnPipeline.compile()
 		  }
 		
 		  stage ('QA'){
