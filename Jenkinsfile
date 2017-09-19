@@ -3,7 +3,7 @@ mavenTemplate {
 	
 	node('maven') {
 		
-		  def settings = sh(returnStdout: true, script: "cat /root/.m2/settings.xml")
+		  def settings = sh(returnStdout: true, script: "cat /home/jenkins/.m2/settings.xml")
 		  
 		  echo "settings.xml contents: ${settings}"
 		
