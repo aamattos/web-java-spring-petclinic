@@ -17,19 +17,15 @@ mavenTemplate {
 		  stage ('QA'){
 		
 			parallel(UnitTest: {
-			 sh 'mvn test'
+				mvnPipeline.test()
 			}, SonarQube: {
-			withSonarQubeEnv('SonarQube Totta') {
-			  sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-			}
+				mvnPipeline.sonarqube()
 			})
 		
 		  }
 		
 		  stage ('Publish'){
-			sh "whereis mvn"  
-			  
-			sh "mvn clean deploy -DskipTests"
+			mvnPipeline.publish()
 		  }
 		  
 		  stage ('Deploy'){
