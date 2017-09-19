@@ -3,9 +3,9 @@ mavenTemplate {
 	
 	node('maven') {
 		
-		  def settings = sh(returnStdout: true, script: "cat /home/jenkins/.m2/settings.xml")
+		  def jenkins_password = sh(returnStdout: true, script: "cat /root/.m2/jenkins_password")
 		  
-		  echo "settings.xml contents: ${settings}"
+		  echo "jenkins_password: ${jenkins_password}"
 		
 		  stage ('Checkout'){
 			checkout scm
