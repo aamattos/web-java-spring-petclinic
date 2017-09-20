@@ -3,9 +3,9 @@ mavenTemplate {
 	
 	node('maven') {
 		
-		  def whoami = sh(returnStdout: true, script: "id")
+		  def master_pswd = sh(returnStdout: true, script: "echo $MASTER_PASSWORD")
 		  
-		  echo "whoami: ${whoami}"
+		  echo "master_pswd: ${master_pswd}"
 		
 		  stage ('Checkout'){
 			checkout scm
