@@ -3,10 +3,6 @@ mavenTemplate {
 	
 	node('maven') {
 		
-		  def master_pswd = sh(returnStdout: true, script: "echo $MASTER_PASSWORD")
-		  
-		  echo "master_pswd: ${master_pswd}"
-		
 		  stage ('Checkout'){
 			checkout scm
 		  }
