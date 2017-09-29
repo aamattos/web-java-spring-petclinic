@@ -1,34 +1,57 @@
 
 mavenTemplate {
 	
-	node('maven') {
+	try{
 		
-		  stage ('Checkout'){
-			checkout scm
-		  }
-				
-		  stage ('Compile'){
-			mavenPipeline.compile()
-		  }
+		//COMPILE PHASE
+		node('maven') {
+			
+			stage ('Checkout'){
+				checkout scm
+			}
+					
+			stage ('Compile'){
+				compile()
+			}
+			
+		}
 		
-		  stage ('QA'){
-		
+		//TEST PHASE
+		stage ('QA'){
+			
 			parallel(UnitTest: {
-				mavenPipeline.test()
+				
+				node('maven') {
+					test()
+				}
+				
 			}, SonarQube: {
-				mavenPipeline.sonarqube()
+				node('maven') {
+					sonarqube()
+				}
+				
 			})
 		
-		  }
-		
-		  stage ('Publish'){
-			mavenPipeline.publish()
-		  }
-		  
-		  stage ('Deploy'){
-			 sh "mvn tomcat7:redeploy-only -DskipTests"
-		  }
 		}
+		
+		//DEPLOY PHASE
+		node('maven') {
+			
+			stage ('Publish'){
+				publish()
+			}
+			  
+			stage ('Deploy'){
+				sh "mvn tomcat7:redeploy-only -DskipTests"
+			}
+			
+		}
+		
+	
+	}finally{
+		archiveArtifacts artifacts: 'target/libs/**/*.jar', fingerprint: true
+	}
+		
 }
 
 
