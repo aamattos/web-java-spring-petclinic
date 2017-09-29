@@ -11,7 +11,7 @@ mavenTemplate {
 			}
 					
 			stage ('Compile'){
-				compile()
+				mavenTemplate.compile()
 			}
 			
 		}
@@ -22,12 +22,12 @@ mavenTemplate {
 			parallel(UnitTest: {
 				
 				node('maven') {
-					test()
+					mavenTemplate.test()
 				}
 				
 			}, SonarQube: {
 				node('maven') {
-					sonarqube()
+					mavenTemplate.sonarqube()
 				}
 				
 			})
@@ -38,7 +38,7 @@ mavenTemplate {
 		node('maven') {
 			
 			stage ('Publish'){
-				publish()
+				mavenTemplate.publish()
 			}
 			  
 			stage ('Deploy'){
