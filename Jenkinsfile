@@ -22,11 +22,13 @@ mavenTemplate {
 			parallel(UnitTest: {
 				
 				node('maven') {
+					checkout scm
 					mavenTemplate.test()
 				}
 				
 			}, SonarQube: {
 				node('maven') {
+					checkout scm
 					mavenTemplate.sonarqube()
 				}
 				
@@ -38,6 +40,7 @@ mavenTemplate {
 		node('maven') {
 			
 			stage ('Publish'){
+				checkout scm
 				mavenTemplate.publish()
 			}
 			  
