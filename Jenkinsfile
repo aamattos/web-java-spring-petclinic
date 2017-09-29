@@ -49,7 +49,7 @@ mavenTemplate {
 		
 	
 	}finally{
-		archiveArtifacts artifacts: 'target/libs/**/*.jar', fingerprint: true
+		//archiveArtifacts artifacts: 'target/libs/**/*.jar', fingerprint: true
 	}
 		
 }
