@@ -15,27 +15,33 @@ mavenTemplate {
 			}
 			
 		}
-		
-		//TEST PHASE
-		stage ('QA'){
 			
-			parallel(UnitTest: {
+		parallel(UnitTest: {
+			
+			node('maven') {
 				
-				node('maven') {
+				stage ('Unit Test'){
+					checkout scm
 					sh "mvn test"
 				}
 				
-			}, SonarQube: {
-				node('maven') {
+			}
+			
+		}, SonarQube: {
+			node('maven') {
+
+				stage ('SonarQube'){
 					checkout scm
 					withSonarQubeEnv('SonarQube Totta') {
 						sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar"
 					}
 				}
-				
-			})
+
+			}
+			
+		})
+	
 		
-		}
 		
 		//DEPLOY PHASE
 		node('maven') {
