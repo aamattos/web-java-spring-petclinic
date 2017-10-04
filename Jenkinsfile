@@ -11,7 +11,7 @@ mavenTemplate {
 			}
 					
 			stage ('Compile'){
-				mavenTemplate.compile()
+				sh "mvn compile"
 			}
 			
 		}
@@ -22,7 +22,7 @@ mavenTemplate {
 			parallel(UnitTest: {
 				
 				node('maven') {
-					mavenTemplate.test()
+					sh "mvn test"
 				}
 				
 			}, SonarQube: {
@@ -41,11 +41,11 @@ mavenTemplate {
 		node('maven') {
 			
 			stage ('Publish'){
-				mavenTemplate.publish()
+				sh "mvn clean deploy -DskipTests"
 			}
 			  
 			stage ('Deploy'){
-				mavenTemplate.deployTomcat()
+				sh "mvn tomcat7:redeploy-only -DskipTests"
 			}
 			
 		}
