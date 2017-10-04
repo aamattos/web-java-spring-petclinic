@@ -47,6 +47,7 @@ mavenTemplate {
 		node('maven') {
 			
 			stage ('Publish'){
+				checkout scm
 				sh "mvn clean deploy -DskipTests"
 			}
 			  
