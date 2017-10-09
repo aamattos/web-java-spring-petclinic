@@ -14,7 +14,7 @@ mavenTemplate {
 			}
 			
 			stage('Unit Test'){
-				mavenTemplate.test()
+				sh "mvn test"
 			}
 			
 			stage('SonarQube'){
