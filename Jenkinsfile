@@ -19,7 +19,7 @@ mavenTemplate {
 			
 			stage('SonarQube'){
 				withSonarQubeEnv('SonarQube Totta') {
-					sh "mvn sonar:sonar"
+					sh "mvn -X sonar:sonar"
 				}
 			}
 			
