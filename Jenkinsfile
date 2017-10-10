@@ -1,3 +1,4 @@
+@Library(['alm-totta-maven-library@develop', 'alm-totta-commons-library@develop']) _
 
 mavenTemplate {
 	
