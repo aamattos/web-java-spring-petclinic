@@ -1,11 +1,10 @@
 
 mavenTemplate {
 	
-		
+		hipchatSend color: 'YELLOW', credentialId: 'hipchat', failOnError: true, message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (Open)", notify: true, room: 'Jenkins', sendAs: 'Jenkins', server: 'hipchat.ci.gsnet.corp', textFormat: true, v2enabled: true
+	
 		//COMPILE PHASE
 		node('maven') {
-			
-			hipchatSend color: 'YELLOW', credentialId: 'hipchat', failOnError: true, message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (Open)", notify: true, room: 'Jenkins', sendAs: 'Jenkins', server: 'hipchat.ci.gsnet.corp', textFormat: true, v2enabled: true
 			
 			stage ('Checkout'){
 				checkout scm
