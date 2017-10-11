@@ -14,15 +14,33 @@ mavenTemplate {
 				mavenTemplate.compile()
 			}
 			
-			stage('Unit Test'){
-				sh "mvn test"
-			}
-			
-			stage('SonarQube'){
-				withSonarQubeEnv('SonarQube Totta') {
-					sh "mvn -e -X sonar:sonar"
+		}
+
+		//TEST PHASE
+		stage ('QA'){			
+			parallel(
+				UnitTest: {				
+					node('maven') {
+						mavenTemplate.test()
+					}				
+				}, 
+
+				SonarQube: {				
+					node('maven') {
+						mavenTemplate.sonarqube()
+					}				
+				}, 
+
+				DependencyCheck: {
+					node('maven') {
+						mavenTemplate.dependencyCheck()
+					}				
 				}
-			}
+			)		
+		}
+
+		//DEPLOY PHASE
+		node('maven') {
 			
 			stage ('Publish'){
 				mavenTemplate.publish()
@@ -32,8 +50,6 @@ mavenTemplate {
 				mavenTemplate.deployTomcat()
 			}
 			
-			
-		}
-		
+		}		
 		
 }
