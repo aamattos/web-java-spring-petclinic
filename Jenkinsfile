@@ -33,6 +33,7 @@ mavenTemplate {
 						unstash 'compiled'
 						mavenTemplate.dependencyCheck()
 						mavenTemplate.sonarqube()
+						mavenTemplate.dependencyCheckPublishToJenkins()
 					}				
 				}
 			)		
