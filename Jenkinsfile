@@ -27,8 +27,7 @@ mavenTemplate {
 
 				SonarQube: {				
 					node('maven') {
-						// SonarQube will read the dependency check results, using its dependency check plugin
-						mavenTemplate.dependencyCheck()
+						// SonarQube method includes dependency check
 						mavenTemplate.sonarqube()
 					}				
 				}
