@@ -17,9 +17,8 @@ mavenTemplate {
 			stage ('Stash workspace'){
 				stash includes: '**', name: 'compiled'
 			}
-	}
-			
 		}
+			
 
 		//TEST PHASE
 		stage ('QA'){			
