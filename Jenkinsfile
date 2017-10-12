@@ -15,6 +15,16 @@ mavenTemplate {
 			}
 			
 		}
+		
+		//DEPENDENCY CHECK PHASE
+		//This is done before QA, so SonarQube imports de final results
+		node('maven') {
+			
+			stage ('DependencyCheck'){			
+					mavenTemplate.dependencyCheck()
+			}				
+			
+		}
 
 		//TEST PHASE
 		stage ('QA'){			
@@ -28,12 +38,6 @@ mavenTemplate {
 				SonarQube: {				
 					node('maven') {
 						mavenTemplate.sonarqube()
-					}				
-				}, 
-
-				DependencyCheck: {
-					node('maven') {
-						mavenTemplate.dependencyCheck()
 					}				
 				}
 			)		
