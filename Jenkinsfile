@@ -12,6 +12,7 @@ mavenTemplate {
 					
 			stage ('Compile'){
 				mavenTemplate.compile()
+				// Stash saves the workspace so it can be used in subsequent nodes without duplicating the checkout
 				stash includes: '**', name: 'compiled'
 			}
 		}
