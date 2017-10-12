@@ -14,6 +14,11 @@ mavenTemplate {
 				mavenTemplate.compile()
 			}
 			
+			stage ('Stash workspace'){
+				stash includes: '**', name: 'compiled'
+			}
+	}
+			
 		}
 
 		//TEST PHASE
@@ -21,13 +26,15 @@ mavenTemplate {
 			parallel(
 				UnitTest: {				
 					node('maven') {
+						unstash 'compiled'
 						mavenTemplate.test()
 					}				
 				}, 
 
 				SonarQube: {				
 					node('maven') {
-						// SonarQube method includes dependency check
+						unstash 'compiled'
+						mavenTemplate.dependencyCheck()
 						mavenTemplate.sonarqube()
 					}				
 				}
@@ -36,6 +43,9 @@ mavenTemplate {
 
 		//DEPLOY PHASE
 		node('maven') {
+			stage ('Untash workspace'){
+				unstash 'compiled'
+			}
 			
 			stage ('Publish'){
 				mavenTemplate.publish()
