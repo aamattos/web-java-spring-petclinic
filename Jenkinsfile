@@ -12,9 +12,6 @@ mavenTemplate {
 					
 			stage ('Compile'){
 				mavenTemplate.compile()
-			}
-			
-			stage ('Stash workspace'){
 				stash includes: '**', name: 'compiled'
 			}
 		}
@@ -42,11 +39,8 @@ mavenTemplate {
 
 		//DEPLOY PHASE
 		node('maven') {
-			stage ('Untash workspace'){
-				unstash 'compiled'
-			}
-			
 			stage ('Publish'){
+				unstash 'compiled'
 				mavenTemplate.publish()
 			}
 			  
