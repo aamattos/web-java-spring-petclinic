@@ -32,6 +32,8 @@ mavenTemplate {
 					node('maven') {
 						unstash 'compiled'
 						mavenTemplate.dependencyCheck()
+						def workspace = manager.build.getEnvVars()["WORKSPACE"]
+						echo "WORKSPACEVARIABLE ${workspace}"
 						mavenTemplate.sonarqube()
 						mavenTemplate.dependencyCheckPublishToJenkins()
 					}				
