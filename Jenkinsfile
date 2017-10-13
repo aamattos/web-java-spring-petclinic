@@ -31,12 +31,7 @@ mavenTemplate {
 				SonarQube: {				
 					node('maven') {
 						unstash 'compiled'
-						mavenTemplate.dependencyCheck()
-						
-						sh "pwd > workspace.txt"
-						def workspace = readFile('workspace.txt').trim()
-						echo "WORKSPACEVARIABLE ${workspace}"
-						
+						mavenTemplate.dependencyCheck()						
 						mavenTemplate.sonarqube()
 						mavenTemplate.dependencyCheckPublishToJenkins()
 					}				
