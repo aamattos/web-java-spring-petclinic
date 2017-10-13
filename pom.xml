@@ -67,7 +67,7 @@
 		<mysql.version>5.1.22</mysql.version>
 
 		<!-- Dependency Check Maven Plugin -->
-		<sonar.dependencyCheck.reportPath>/tmp/workspace/PetClinic-corporativo/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+		<sonar.dependencyCheck.reportPath>/tmp/workspace/PetClinic-corporativo/xxx/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
 	</properties>
 
 	<dependencies>
