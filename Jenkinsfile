@@ -1,4 +1,3 @@
-@Library('alm-totta-commons-library@develop') _
 
 mavenTemplate {
 	
