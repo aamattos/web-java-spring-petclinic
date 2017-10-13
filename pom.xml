@@ -67,8 +67,6 @@
 		<mysql.version>5.1.22</mysql.version>
 
 		<!-- Dependency Check Maven Plugin -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.host.url>https://sonarqube-alm-feature-go.tottapaas.totta.dev.corp</sonar.host.url>
 		<sonar.dependencyCheck.reportPath>/tmp/workspace/PetClinic-corporativo/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
 	</properties>
 
