@@ -66,6 +66,8 @@
 
 		<mysql.version>5.1.22</mysql.version>
 
+		<!-- Dependency Check Maven Plugin -->
+		<sonar.dependencyCheck.reportPath>${project.build.directory}/target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
 	</properties>
 
 	<dependencies>

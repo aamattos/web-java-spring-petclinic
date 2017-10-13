@@ -12,28 +12,28 @@ mavenTemplate {
 					
 			stage ('Compile'){
 				mavenTemplate.compile()
+				// Stash saves the workspace so it can be used in subsequent nodes without duplicating the checkout
+				stash includes: '**', name: 'compiled'
 			}
-			
 		}
+			
 
 		//TEST PHASE
 		stage ('QA'){			
 			parallel(
 				UnitTest: {				
 					node('maven') {
+						unstash 'compiled'
 						mavenTemplate.test()
 					}				
 				}, 
 
 				SonarQube: {				
 					node('maven') {
-						mavenTemplate.sonarqube()
-					}				
-				}, 
-
-				DependencyCheck: {
-					node('maven') {
+						unstash 'compiled'
 						mavenTemplate.dependencyCheck()
+						mavenTemplate.sonarqube()
+						mavenTemplate.dependencyCheckPublishToJenkins()
 					}				
 				}
 			)		
@@ -41,8 +41,8 @@ mavenTemplate {
 
 		//DEPLOY PHASE
 		node('maven') {
-			
 			stage ('Publish'){
+				unstash 'compiled'
 				mavenTemplate.publish()
 			}
 			  
