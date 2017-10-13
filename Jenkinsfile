@@ -33,12 +33,9 @@ mavenTemplate {
 						unstash 'compiled'
 						mavenTemplate.dependencyCheck()
 						
-						def workspace = manager.build.getEnvVars()["WORKSPACE"]
-						echo "WORKSPACEVARIABLE #METHOD1 ${workspace}"
-						
 						sh "pwd > workspace.txt"
-						workspace2 = readFile('workspace.txt').trim()
-						echo "WORKSPACEVARIABLE #METHOD2 ${workspace2}"
+						def workspace = readFile('workspace.txt').trim()
+						echo "WORKSPACEVARIABLE ${workspace}"
 						
 						mavenTemplate.sonarqube()
 						mavenTemplate.dependencyCheckPublishToJenkins()
