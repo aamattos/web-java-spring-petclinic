@@ -32,7 +32,9 @@ mavenTemplate {
 					node('maven') {
 						unstash 'compiled'
 						mavenTemplate.dependencyCheck()
-						mavenTemplate.sonarqube()
+
+						sh "mvn sonar:sonar"
+
 						mavenTemplate.dependencyCheckPublishToJenkins()
 					}				
 				}
