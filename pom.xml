@@ -463,7 +463,7 @@
 				</dependencies>
 				<configuration>
 					<databaseDriverName>org.postgresql.Driver</databaseDriverName>
-					<connectionString>jdbc:jdbc:postgresql://postgresql:5432/dc-dev</connectionString>
+					<connectionString>jdbc:postgresql://postgresql:5432/dc-dev</connectionString>
 					<databaseUser>alm</databaseUser>
 					<databasePassword>password</databasePassword>
 				</configuration>
