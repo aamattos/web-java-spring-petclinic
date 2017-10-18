@@ -460,22 +460,6 @@
 				  <password>jenkins</password>   
 				 </configuration>   
 			</plugin> 			
-			<plugin>
-					<groupId>org.owasp</groupId>
-					<artifactId>dependency-check-maven</artifactId>
-					<version>2.1.1</version>
-					<configuration>							
-							<cveUrl12Modified>${cve-Url-12-Modified}</cveUrl12Modified>
-							<cveUrl20Modified>${cve-Url-20-Modified}</cveUrl20Modified>							
-							<cveUrl12Base>${cve-Url-12-Base}</cveUrl12Base>
-							<cveUrl20Base>${cve-Url-20-Base}</cveUrl20Base>
-							<dataDirectory>${nvd-data-directory}</dataDirectory>		
-							<format>${dependency-check-format}</format>
-					</configuration>
-					<!-- Don't specify an execution, because this might take long and is not needed in every build.
-							 A report can be generated on demand using "mvn org.owasp:dependency-check-maven:check"
-							 report will be saved to target/dependency-check-report.html -->
-			</plugin>
 		</plugins>
 	</build>
 	<url>demopetclinic</url>
