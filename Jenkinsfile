@@ -31,7 +31,7 @@ mavenTemplate {
 				SonarQube: {				
 					node('maven') {
 						unstash 'compiled'
-						mavenTemplate.dependencyCheck()
+						mavenTemplate.dependencyCheck()						
 						mavenTemplate.sonarqube()
 						mavenTemplate.dependencyCheckPublishToJenkins()
 					}				
