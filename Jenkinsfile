@@ -6,6 +6,6 @@ mavenSimplePipeline{
 	dbUser = "alm"
 	dbOwner = "alm"
 	dbPassword = "password"
-	nvdDB = "nvd-dev"
+	nvdDB = "nvd"
 	
 }
