@@ -465,6 +465,7 @@
 					<databaseDriverName>org.postgresql.Driver</databaseDriverName>
 					<format>XML</format>
 					<autoUpdate>false</autoUpdate>
+					<nexusUrl>http://nexus:8081</nexusUrl>
 				</configuration>
 				<!-- Don't specify an execution, because this might take long and is 
 					not needed in every build. A report can be generated on demand using "mvn 
