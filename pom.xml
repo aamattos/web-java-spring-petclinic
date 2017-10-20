@@ -464,6 +464,7 @@
 				<configuration>
 					<databaseDriverName>org.postgresql.Driver</databaseDriverName>
 					<format>XML</format>
+					<autoUpdate>false</autoUpdate>
 				</configuration>
 				<!-- Don't specify an execution, because this might take long and is 
 					not needed in every build. A report can be generated on demand using "mvn 
