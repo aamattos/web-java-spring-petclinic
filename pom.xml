@@ -463,9 +463,6 @@
 				</dependencies>
 				<configuration>
 					<databaseDriverName>org.postgresql.Driver</databaseDriverName>
-					<connectionString>jdbc:postgresql://postgresql:5432/dc-dev</connectionString>
-					<databaseUser>alm</databaseUser>
-					<databasePassword>password</databasePassword>
 				</configuration>
 				<!-- Don't specify an execution, because this might take long and is 
 					not needed in every build. A report can be generated on demand using "mvn 
