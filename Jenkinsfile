@@ -22,13 +22,8 @@ mavenTemplate{
 					UnitTest: {
 						node('maven') {
 
-							stage("Checkout") {
-								checkout scm
-							}
-							
-							stage("Unit Test") {
-								mavenTemplate.test()
-							}
+							checkout scm
+							mavenTemplate.test()
 							
 						}
 					},
@@ -36,18 +31,9 @@ mavenTemplate{
 					SonarQube: {
 						node('maven') {
 							
-							stage("Checkout") {
-								checkout scm
-							}
-							
-							stage('Dep. Check') {
-								mavenTemplate.dependencyCheck()
-							}
-							
-							stage('Sonarqube') {
-								mavenTemplate.sonarqube()
-							}
-							
+							checkout scm
+							mavenTemplate.dependencyCheck()
+							mavenTemplate.sonarqube()
 							
 						}
 					}
@@ -57,11 +43,8 @@ mavenTemplate{
 			//DEPLOY PHASE
 			node('maven') {
 				
-				stage("Checkout") {
-					checkout scm
-				}
-				
 				stage ('Publish'){
+					checkout scm
 					mavenTemplate.publish()
 				}
 				  
