@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>pt.alm</groupId>
+    <artifactId>maven-pom</artifactId>
+    <version>1.0.0</version>
+  </parent>  
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples</groupId>
 	<artifactId>petclinic</artifactId>
@@ -66,9 +71,6 @@
 		<dandelion.version>0.10.1</dandelion.version>
 
 		<mysql.version>5.1.22</mysql.version>
-
-		<!-- Dependency Check Maven Plugin -->
-		<sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
 	</properties>
 
 	<dependencies>
@@ -449,25 +451,6 @@
 					<username>jenkins</username>
 					<password>jenkins</password>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-				<version>2.1.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.postgresql</groupId>
-						<artifactId>postgresql</artifactId>
-						<version>42.1.4</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<databaseDriverName>org.postgresql.Driver</databaseDriverName>
-					<format>XML</format>
-				</configuration>
-				<!-- Don't specify an execution, because this might take long and is 
-					not needed in every build. A report can be generated on demand using "mvn 
-					org.owasp:dependency-check-maven:check" report will be saved to target/dependency-check-report.html -->
 			</plugin>
 		</plugins>
 	</build>
