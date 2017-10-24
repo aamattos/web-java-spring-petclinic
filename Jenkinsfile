@@ -15,26 +15,40 @@ mavenTemplate{
 					mavenTemplate.compile()
 				}
 				
-				stage('Dep. Check') {
-					mavenTemplate.dependencyCheck()
-					//stash 'compiled-depcheck'
-				}
-				
 			}
 				
 			stage ('QA'){
 				parallel(
 					UnitTest: {
 						node('maven') {
-							//unstash 'compiled-depcheck'
-							mavenTemplate.test()
+
+							stage("Checkout") {
+								checkout scm
+							}
+							
+							stage("Unit Test") {
+								mavenTemplate.test()
+							}
+							
 						}
 					},
 		
 					SonarQube: {
 						node('maven') {
-							//unstash 'compiled-depcheck'
-							mavenTemplate.sonarqube()
+							
+							stage("Checkout") {
+								checkout scm
+							}
+							
+							stage('Dep. Check') {
+								mavenTemplate.dependencyCheck()
+							}
+							
+							stage('Sonarqube') {
+								mavenTemplate.sonarqube()
+							}
+							
+							
 						}
 					}
 				)
@@ -42,8 +56,12 @@ mavenTemplate{
 		
 			//DEPLOY PHASE
 			node('maven') {
+				
+				stage("Checkout") {
+					checkout scm
+				}
+				
 				stage ('Publish'){
-					//unstash 'compiled-depcheck'
 					mavenTemplate.publish()
 				}
 				  
