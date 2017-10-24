@@ -33,7 +33,10 @@ mavenTemplate{
 							
 							checkout scm
 							mavenTemplate.dependencyCheck()
-							mavenTemplate.sonarqube()
+							
+							withSonarQubeEnv('SonarQube Totta') {
+								sh(returnStdout: true, script: "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar")
+							}
 							
 						}
 					}
