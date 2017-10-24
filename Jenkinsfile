@@ -13,7 +13,11 @@ mavenTemplate{
 				
 				stage("Compile") {
 					mavenTemplate.compile()
-					stash "compiled"
+				}
+				
+				stage('Dep. Check') {
+					mavenTemplate.dependencyCheck()
+					stash 'compiled-depcheck'
 				}
 				
 			}
@@ -23,7 +27,7 @@ mavenTemplate{
 					UnitTest: {
 						node('maven') {
 
-							checkout scm
+							unstash 'compiled-depcheck'
 							mavenTemplate.test()
 							
 						}
@@ -32,8 +36,7 @@ mavenTemplate{
 					SonarQube: {
 						node('maven') {
 							
-							checkout scm
-							mavenTemplate.dependencyCheck()
+							unstash 'compiled-depcheck'
 							
 							withSonarQubeEnv('SonarQube Totta') {
 								sh(returnStdout: true, script: "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar")
@@ -48,7 +51,7 @@ mavenTemplate{
 			node('maven') {
 				
 				stage ('Publish'){
-					checkout scm
+					unstash 'compiled-depcheck'
 					mavenTemplate.publish()
 				}
 				  
