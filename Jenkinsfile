@@ -17,7 +17,7 @@ mavenTemplate{
 				
 				stage('Dep. Check') {
 					mavenTemplate.dependencyCheck()
-					stash 'compiled-depcheck'
+					//stash 'compiled-depcheck'
 				}
 				
 			}
@@ -26,14 +26,14 @@ mavenTemplate{
 				parallel(
 					UnitTest: {
 						node('maven') {
-							unstash 'compiled-depcheck'
+							//unstash 'compiled-depcheck'
 							mavenTemplate.test()
 						}
 					},
 		
 					SonarQube: {
 						node('maven') {
-							unstash 'compiled-depcheck'
+							//unstash 'compiled-depcheck'
 							mavenTemplate.sonarqube()
 						}
 					}
@@ -43,7 +43,7 @@ mavenTemplate{
 			//DEPLOY PHASE
 			node('maven') {
 				stage ('Publish'){
-					unstash 'compiled-depcheck'
+					//unstash 'compiled-depcheck'
 					mavenTemplate.publish()
 				}
 				  
