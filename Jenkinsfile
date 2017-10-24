@@ -13,6 +13,7 @@ mavenTemplate{
 				
 				stage("Compile") {
 					mavenTemplate.compile()
+					stash "compiled"
 				}
 				
 			}
