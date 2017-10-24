@@ -13,7 +13,6 @@ mavenTemplate{
 				
 				stage("Compile") {
 					mavenTemplate.compile()
-					stash "compiled"
 				}
 				
 			}
@@ -22,7 +21,8 @@ mavenTemplate{
 				parallel(
 					UnitTest: {
 						node('maven') {
-							unstash "compiled"
+
+							checkout scm
 							mavenTemplate.test()
 							
 						}
@@ -31,7 +31,7 @@ mavenTemplate{
 					SonarQube: {
 						node('maven') {
 							
-							unstash "compiled"
+							checkout scm
 							mavenTemplate.dependencyCheck()
 							
 							withSonarQubeEnv('SonarQube Totta') {
@@ -47,7 +47,7 @@ mavenTemplate{
 			node('maven') {
 				
 				stage ('Publish'){
-					unstash "compiled"
+					checkout scm
 					mavenTemplate.publish()
 				}
 				  
