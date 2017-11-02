@@ -23,7 +23,7 @@ mavenTemplate{
 
 				stage('Dep. Check') {
 
-					// OWASP dependncy check (checks dependencies for known vulnerabilities)
+					// OWASP dependency check (checks dependencies for known vulnerabilities)
 					mavenTemplate.dependencyCheck()
 
 					// Save workspace
