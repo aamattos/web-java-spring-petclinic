@@ -9,22 +9,22 @@ mavenTemplate{
 
 				stage("Checkout") {
 
-					// Checkout the project from Git
-					mavenTemplate.checkout()
+					// Clone the project from Git, checkout the branch configured in Jenkins
+					mavenPipeline.checkout()
 
 				}
 
 				stage("Compile") {
 
 					// Maven compile
-					mavenTemplate.compile()
+					mavenPipeline.compile()
 
 				}
 
 				stage('Dep. Check') {
 
 					// OWASP dependency check (checks dependencies for known vulnerabilities)
-					mavenTemplate.dependencyCheck()
+					mavenPipeline.dependencyCheck()
 
 					// Save workspace
 					stash 'compiled-depcheck'
@@ -44,7 +44,7 @@ mavenTemplate{
 							unstash 'compiled-depcheck'
 
 							// Maven unit testing
-							mavenTemplate.test()
+							mavenPipeline.test()
 
 						}
 					},
@@ -56,7 +56,7 @@ mavenTemplate{
 							unstash 'compiled-depcheck'
 
 							// SonarQube code analysis
-							mavenTemplate.sonarqube()
+							mavenPipeline.sonarqube()
 
 						}
 					}
@@ -72,13 +72,13 @@ mavenTemplate{
 					unstash 'compiled-depcheck'
 
 					// Publish to local environment Nexus repository
-					mavenTemplate.publish('local')
+					mavenPipeline.publish('local')
 				}
 
 				stage ('Deploy'){
 
 					// Deploy app to Tomcat
-					mavenTemplate.deployTomcat()
+					mavenPipeline.deployTomcat()
 
 				}
 
