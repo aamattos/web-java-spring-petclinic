@@ -1,6 +1,5 @@
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
-mavenTemplate{
 
 	try{
 
@@ -92,4 +91,3 @@ mavenTemplate{
 
 		}
 
-}
