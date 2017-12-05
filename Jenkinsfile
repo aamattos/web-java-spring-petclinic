@@ -7,7 +7,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 		
 			openshiftPipeline{
 				
-					authToken = "openshift-token"
+					authToken = "petclinic-openshift-token"
 					
 					templateName = "petclinic"
 					templatePath = "openshift/petclinic.yml"
