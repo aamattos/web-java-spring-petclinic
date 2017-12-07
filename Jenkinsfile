@@ -5,19 +5,6 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
 	try{
 		
-			openshiftPipeline{
-				
-					authToken = "petclinic-openshift-token"
-					
-					templateName = "petclinic"
-					templatePath = "openshift/petclinic.yml"
-					targetDev = ["alm-petclinic"]
-					
-					paramsPath = [:]
-					paramsPath["alm-petclinic"] = "openshift/params.yml"
-			}
-			
-
 			//DEVELOP PIPELINE
 			node('maven') {
 
