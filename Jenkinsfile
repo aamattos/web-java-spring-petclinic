@@ -31,7 +31,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				}
 				
 				stage ('Unit Tests'){
-					mavenPipeline.test()
+					sh "mvn clean test"
 				}
 				
 				stage ('SonarQube'){
