@@ -35,7 +35,9 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				}
 				
 				stage ('SonarQube'){
-					sh "mvn sonar:sonar"
+					withSonarQubeEnv('SonarQube Totta') {
+						sh "mvn sonar:sonar"
+					}
 				}
 				
 				stage ('Publish'){
