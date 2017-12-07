@@ -31,14 +31,10 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				}
 				
 				stage ('Unit Tests'){
-					sh "mvn clean test"
+					sh "mvn test"
 				}
 				
 				stage ('SonarQube'){
-					
-					// Restore workspace
-					unstash 'compiled-depcheck'
-					
 					withSonarQubeEnv('SonarQube Totta') {
 						sh "mvn sonar:sonar"
 					}
