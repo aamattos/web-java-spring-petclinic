@@ -35,7 +35,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				}
 				
 				stage ('SonarQube'){
-					mavenPipeline.sonarqube()
+					sh "mvn sonar:sonar"
 				}
 				
 				stage ('Publish'){
