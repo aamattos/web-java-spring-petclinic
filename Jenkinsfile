@@ -35,6 +35,10 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				}
 				
 				stage ('SonarQube'){
+					
+					// Restore workspace
+					unstash 'compiled-depcheck'
+					
 					withSonarQubeEnv('SonarQube Totta') {
 						sh "mvn sonar:sonar"
 					}
