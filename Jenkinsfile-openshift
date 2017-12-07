@@ -1,0 +1,12 @@
+
+openshiftPipeline{
+	
+		authToken = "petclinic-openshift-token"
+		
+		templateName = "petclinic"
+		templatePath = "openshift/petclinic.yml"
+		targetDev = ["alm-petclinic"]
+		
+		paramsPath = [:]
+		paramsPath["alm-petclinic"] = "openshift/params.yml"
+}
