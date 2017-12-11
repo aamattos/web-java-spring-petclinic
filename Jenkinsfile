@@ -29,6 +29,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
 					// OWASP dependency check (checks dependencies for known vulnerabilities)
 					mavenPipeline.dependencyCheck()
+					input "Continue?"
 				}
 				
 				stage ('Unit Tests'){
