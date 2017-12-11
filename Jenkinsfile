@@ -18,16 +18,15 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					// Maven compile
 					mavenPipeline.compile()
 
+					// Save workspace
+					stash 'compiled'
+
 				}
 
 				stage('Dep. Check') {
 
 					// OWASP dependency check (checks dependencies for known vulnerabilities)
 					mavenPipeline.dependencyCheck()
-
-					// Save workspace
-					stash 'compiled-depcheck'
-
 				}
 				
 				stage ('Unit Tests'){
@@ -40,10 +39,25 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					}
 				}
 				
+			}
+			
+			// No need to occupy a node
+		  timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+			echo "Waiting QualityGate Response"
+			def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+			echo "QualityGate Response Received. Status: ${qg.status}"
+			if (qg.status != 'OK') {
+			  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+			}
+		  }
+			
+			//DEVELOP PIPELINE
+			node('maven') {
+
 				stage ('Publish'){
 					
 					// Restore workspace
-					unstash 'compiled-depcheck'
+					unstash 'compiled'
 
 					// Publish to local environment Nexus repository
 					mavenPipeline.publish('local')
