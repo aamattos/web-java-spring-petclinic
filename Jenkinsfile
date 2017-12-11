@@ -47,7 +47,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 			def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
 			echo "QualityGate Response Received. Status: ${qg.status}"
 			if (qg.status != 'OK') {
-			  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+			  currentBuild.result = 'UNSTABLE'
 			}
 		  }
 			
