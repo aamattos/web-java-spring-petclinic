@@ -14,6 +14,14 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					mavenPipeline.checkout()
 
 				}
+				
+				stage ('Publish'){
+					
+					// Restore workspace
+					unstash 'compiled'
+
+					mavenPipeline.publish("local")
+				}
 
 				stage("Compile") {
 
@@ -62,7 +70,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					unstash 'compiled'
 
 					mavenPipeline.publish("local")
-			}
+				}
 
 				stage ('Deploy'){
 
