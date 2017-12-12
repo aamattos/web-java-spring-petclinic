@@ -67,7 +67,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					def distSnapshots = "maven-snapshots:default:http://nexus:8081/repository/maven-snapshots"
 					def distReleases = "maven-releases:default:http://nexus:8081/repository/maven-releases/"
 					
-					sh(returnStdout: true, script: "mvn clean deploy -DskipTests -DaltSnapshotDeploymentRepository=${distSnapshots} -DaltReleaseDeploymentRepository=${distReleases}")
+					sh(returnStdout: true, script: "mvn  -DskipTests -DaltSnapshotDeploymentRepository=${distSnapshots} -DaltReleaseDeploymentRepository=${distReleases} clean deploy")
 				}
 
 				stage ('Deploy'){
