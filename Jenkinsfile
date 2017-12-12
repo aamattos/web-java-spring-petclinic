@@ -61,13 +61,8 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					// Restore workspace
 					unstash 'compiled'
 
-					// Publish to local environment Nexus repository
-					//mavenPipeline.publish('local')
-					def distSnapshots = "maven-snapshots:default:http://nexus:8081/repository/maven-snapshots"
-					def distReleases = "maven-releases:default:http://nexus:8081/repository/maven-releases/"
-					
-					sh(returnStdout: true, script: "mvn  -DskipTests -DaltSnapshotDeploymentRepository=${distSnapshots} -DaltDeploymentRepository=${distReleases} clean deploy")
-				}
+					mavenPipeline.publish("local")
+			}
 
 				stage ('Deploy'){
 
