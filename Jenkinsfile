@@ -52,6 +52,13 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 			  currentBuild.result = 'UNSTABLE'
 			}
 		  }
+		  
+		  //RELEASE CANDIDATE PIPELINE
+		  timeout(time:1, unit:'DAYS') {
+  
+			  input message:'Approve publishing to Nexus ?'
+			  
+		  }
 			
 			//DEVELOP PIPELINE
 			node('maven') {
