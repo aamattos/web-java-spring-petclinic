@@ -1,4 +1,4 @@
-@Library('alm-totta-maven-library') _
+@Library('alm-totta-maven-library@develop') _
 
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
@@ -32,8 +32,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 //				}
 				
 				stage ('Unit Tests'){
-					sh "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=false"
-					sh "mvn test"
+					mavenPipeline.test()
 				}
 				
 				stage ('SonarQube'){
@@ -67,7 +66,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					def distSnapshots = "maven-snapshots:default:http://nexus:8081/repository/maven-snapshots"
 					def distReleases = "maven-releases:default:http://nexus:8081/repository/maven-releases/"
 					
-					sh(returnStdout: true, script: "mvn  -DskipTests -DaltSnapshotDeploymentRepository=${distSnapshots} -DaltReleaseDeploymentRepository=${distReleases} clean deploy")
+					sh(returnStdout: true, script: "mvn  -DskipTests -DaltSnapshotDeploymentRepository=${distSnapshots} -DaltDeploymentRepository=${distReleases} clean deploy")
 				}
 
 				stage ('Deploy'){
