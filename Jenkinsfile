@@ -25,13 +25,14 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
 				}
 
-				stage('Dep. Check') {
-
-					// OWASP dependency check (checks dependencies for known vulnerabilities)
-					mavenPipeline.dependencyCheck()
-				}
+//				stage('Dep. Check') {
+//
+//					// OWASP dependency check (checks dependencies for known vulnerabilities)
+//					mavenPipeline.dependencyCheck()
+//				}
 				
 				stage ('Unit Tests'){
+					sh "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=false"
 					sh "mvn test"
 				}
 				
@@ -62,7 +63,11 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					unstash 'compiled'
 
 					// Publish to local environment Nexus repository
-					mavenPipeline.publish('local')
+					//mavenPipeline.publish('local')
+					def distSnapshots = "maven-snapshots:default:http://nexus:8081/repository/maven-snapshots"
+					def distReleases = "maven-releases:default:http://nexus:8081/repository/maven-releases/"
+					
+					sh(returnStdout: true, script: "mvn clean deploy -DskipTests -DaltSnapshotDeploymentRepository=${distSnapshots} -DaltReleaseDeploymentRepository=${distReleases}")
 				}
 
 				stage ('Deploy'){
