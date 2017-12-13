@@ -15,15 +15,15 @@ import pt.alm.util.pipeline.DistributionProfile
 
 				}
 
-//				stage("Compile") {
-//
-//					// Maven compile
-//					mavenPipeline.compile()
-//
-//					// Save workspace
-//					stash 'compiled'
-//
-//				}
+				stage("Compile") {
+
+					// Maven compile
+					mavenPipeline.compile()
+
+					// Save workspace
+					stash 'compiled'
+
+				}
 
 				stage('Dep. Check') {
 
