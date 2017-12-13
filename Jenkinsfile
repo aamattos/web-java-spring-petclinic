@@ -29,7 +29,6 @@ import pt.alm.util.pipeline.DistributionProfile
 
 					// OWASP dependency check (checks dependencies for known vulnerabilities)
 					mavenPipeline.dependencyCheck()
-					input "continue?"
 				}
 				
 				stage ('Unit Tests'){
@@ -38,7 +37,7 @@ import pt.alm.util.pipeline.DistributionProfile
 				
 				stage ('SonarQube'){
 					withSonarQubeEnv('SonarQube Totta') {
-						sh "mvn sonar:sonar"
+						sh "mvn -Dsonar.dependencyCheck.reportPath=target/dependency-check-report.xml -Dsonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html sonar:sonar"
 					}
 				}
 				
