@@ -36,7 +36,6 @@ import pt.alm.util.pipeline.DistributionProfile
 				}
 				
 				stage ('SonarQube'){
-					input "continue ?"
 					withSonarQubeEnv('SonarQube Totta') {
 						sh "mvn -Dsonar.dependencyCheck.reportPath=${WORKSPACE}/target/dependency-check-report.xml -Dsonar.dependencyCheck.htmlReportPath=${WORKSPACE}/target/dependency-check-report.html sonar:sonar"
 					}
