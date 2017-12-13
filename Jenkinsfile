@@ -18,7 +18,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				stage ('Publish'){
 					
 
-					mavenPipeline.publish(mavenPipeline.DistributionProfiles.LOCAL)
+					mavenPipeline.publish()
 				}
 
 				stage("Compile") {
@@ -67,7 +67,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 					// Restore workspace
 					unstash 'compiled'
 
-					mavenPipeline.publish(mavenPipeline.DistributionProfiles.LOCAL)
+					mavenPipeline.publish()
 				}
 
 				stage ('Deploy'){
