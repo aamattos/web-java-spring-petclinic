@@ -14,12 +14,6 @@ import pt.alm.util.pipeline.DistributionProfile
 					mavenPipeline.checkout()
 
 				}
-				
-				stage ('Publish'){
-					
-
-					mavenPipeline.publish(DistributionProfile.LOCAL)
-				}
 
 				stage("Compile") {
 
@@ -31,11 +25,11 @@ import pt.alm.util.pipeline.DistributionProfile
 
 				}
 
-//				stage('Dep. Check') {
-//
-//					// OWASP dependency check (checks dependencies for known vulnerabilities)
-//					mavenPipeline.dependencyCheck()
-//				}
+				stage('Dep. Check') {
+
+					// OWASP dependency check (checks dependencies for known vulnerabilities)
+					mavenPipeline.dependencyCheck()
+				}
 				
 				stage ('Unit Tests'){
 					mavenPipeline.test()
@@ -67,7 +61,7 @@ import pt.alm.util.pipeline.DistributionProfile
 					// Restore workspace
 					unstash 'compiled'
 
-					mavenPipeline.publish()
+					mavenPipeline.publish(DistributionProfile.LOCAL)
 				}
 
 				stage ('Deploy'){
