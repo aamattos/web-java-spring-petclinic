@@ -31,9 +31,9 @@ import pt.alm.util.pipeline.DistributionProfile
 					mavenPipeline.dependencyCheck()
 				}
 				
-//				stage ('Unit Tests'){
-//					mavenPipeline.test()
-//				}
+				stage ('Unit Tests'){
+					mavenPipeline.test()
+				}
 				
 				stage ('SonarQube'){
 					input "continue?"
