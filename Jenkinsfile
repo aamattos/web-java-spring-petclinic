@@ -1,7 +1,7 @@
 @Library('alm-totta-maven-library@develop') _
 
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
-import pt.alm.util.logging.DistributionProfile
+import pt.alm.util.pipeline.DistributionProfile
 
 	try{
 		
