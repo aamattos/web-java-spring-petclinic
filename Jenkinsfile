@@ -18,7 +18,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				stage ('Publish'){
 					
 
-					mavenPipeline.publish("local")
+					mavenPipeline.publish(DistributionProfiles.LOCAL)
 				}
 
 				stage("Compile") {
