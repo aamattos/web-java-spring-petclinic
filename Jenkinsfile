@@ -1,6 +1,7 @@
 @Library('alm-totta-maven-library@develop') _
 
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
+import pt.alm.util.pipeline.DistributionProfile
 
 	try{
 		
@@ -17,7 +18,7 @@ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 				stage ('Publish'){
 					
 
-					mavenPipeline.publish(mavenPipeline.LOCAL)
+					mavenPipeline.publish(DistributionProfile.LOCAL)
 				}
 
 				stage("Compile") {
