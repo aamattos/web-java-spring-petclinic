@@ -15,15 +15,15 @@ import pt.alm.util.pipeline.DistributionProfile
 
 				}
 
-				stage("Compile") {
-
-					// Maven compile
-					mavenPipeline.compile()
-
-					// Save workspace
-					stash 'compiled'
-
-				}
+//				stage("Compile") {
+//
+//					// Maven compile
+//					mavenPipeline.compile()
+//
+//					// Save workspace
+//					stash 'compiled'
+//
+//				}
 
 				stage('Dep. Check') {
 
@@ -31,9 +31,9 @@ import pt.alm.util.pipeline.DistributionProfile
 					mavenPipeline.dependencyCheck()
 				}
 				
-				stage ('Unit Tests'){
-					mavenPipeline.test()
-				}
+//				stage ('Unit Tests'){
+//					mavenPipeline.test()
+//				}
 				
 				stage ('SonarQube'){
 					input "continue?"
