@@ -37,7 +37,7 @@ import pt.alm.util.pipeline.DistributionProfile
 				
 				stage ('SonarQube'){
 					withSonarQubeEnv('SonarQube Totta') {
-						sh "mvn sonar:sonar"
+						mavenPipeline.sonarqube()
 					}
 				}
 				
