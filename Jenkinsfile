@@ -1,4 +1,4 @@
-//@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
+@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
 
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 import pt.alm.util.pipeline.DistributionProfile
@@ -41,15 +41,9 @@ import pt.alm.util.pipeline.DistributionProfile
 				
 			}
 			
-			// No need to occupy a node
-		  timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
-			echo "Waiting QualityGate Response"
-			def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
-			echo "QualityGate Response Received. Status: ${qg.status}"
-			if (qg.status != 'OK') {
-			  currentBuild.result = 'UNSTABLE'
+			if(!pipeline.skipSonar()) {
+				mavenPipeline.waitForQualityGate()
 			}
-		  }
 			
 			//DEVELOP PIPELINE
 			node('maven') {
