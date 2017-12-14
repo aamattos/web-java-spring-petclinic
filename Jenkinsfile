@@ -41,9 +41,7 @@ import pt.alm.util.pipeline.DistributionProfile
 				
 			}
 			
-			if(!pipeline.skipSonar()) {
-				mavenPipeline.waitForQualityGate()
-			}
+			mavenPipeline.waitForQualityGate()
 			
 			//DEVELOP PIPELINE
 			node('maven') {
