@@ -22,9 +22,6 @@ import pt.alm.util.pipeline.DistributionProfile
 				
 				stage ('Publish'){
 					
-					// Restore workspace
-					unstash 'compiled'
-
 					mavenPipeline.publish(DistributionProfile.LOCAL)
 				}
 
