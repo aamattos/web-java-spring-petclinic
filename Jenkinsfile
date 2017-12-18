@@ -27,15 +27,9 @@ import pt.alm.util.pipeline.DistributionProfile
 
 				stage ('QA'){
 					mavenPipeline.sonarqube()
+					mavenPipeline.waitForSonar()
 				}
 				
-			}
-			
-			mavenPipeline.waitForSonar()
-			
-			//DEVELOP PIPELINE
-			node('maven') {
-
 				stage ('Publish'){
 					
 					// Restore workspace
