@@ -1,4 +1,4 @@
-//@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
+@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
 
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 import pt.alm.util.pipeline.DistributionProfile
@@ -15,19 +15,9 @@ import pt.alm.util.pipeline.DistributionProfile
 
 				}
 
-				stage("Compile") {
-
-					// Maven compile
-					mavenPipeline.compile()
-
-					// Save workspace
-					stash 'compiled'
-
-				}
-
+				//Compile, Dep Check, Tests & Sonarqube
 				stage ('QA'){
-					mavenPipeline.sonarqube()
-					mavenPipeline.waitForSonar()
+					mavenPipeline.sonarqube("UNSTABLE")
 				}
 				
 				stage ('Publish'){
