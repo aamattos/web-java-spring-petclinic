@@ -454,7 +454,7 @@
 						<version>2.2</version>
 						<configuration>
 							<url>http://tomcat8.alm-petclinic-dev.svc:8080/manager/text</url>
-							<server>TomcatDevServer</server>
+							<server>Dev</server>
 							<username>jenkins</username>
 							<password>jenkins</password>
 						</configuration>
@@ -478,7 +478,7 @@
 						<version>2.2</version>
 						<configuration>
 							<url>http://tomcat8.alm-petclinic.svc:8080/manager/text</url>
-							<server>TomcatDevServer</server>
+							<server>Pro</server>
 							<username>jenkins</username>
 							<password>jenkins</password>
 						</configuration>
