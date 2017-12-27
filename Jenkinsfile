@@ -1,4 +1,4 @@
-//@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
+@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
 
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 import pt.alm.util.pipeline.DistributionProfile
@@ -8,13 +8,6 @@ import pt.alm.util.pipeline.DistributionProfile
 			//DEVELOP PIPELINE
 			node('maven') {
 				
-				stage("Test") {
-					
-					// Clone the project from Git, checkout the branch configured in Jenkins
-					developerHub.publishDeployData()
-
-				}
-
 				stage("Checkout") {
 
 					// Clone the project from Git, checkout the branch configured in Jenkins
