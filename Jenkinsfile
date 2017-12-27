@@ -7,6 +7,13 @@ import pt.alm.util.pipeline.DistributionProfile
 		
 			//DEVELOP PIPELINE
 			node('maven') {
+				
+				stage("Test") {
+					
+					// Clone the project from Git, checkout the branch configured in Jenkins
+					developerHub.publishDeployData()
+
+				}
 
 				stage("Checkout") {
 
