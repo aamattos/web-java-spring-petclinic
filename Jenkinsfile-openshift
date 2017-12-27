@@ -9,5 +9,6 @@ openshiftPipeline{
 		targetPro = ["alm-petclinic"]
 		
 		paramsPath = [:]
+		paramsPath["alm-petclinic-dev"] = "openshift/params.yml"
 		paramsPath["alm-petclinic"] = "openshift/params.yml"
 }
