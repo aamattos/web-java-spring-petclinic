@@ -150,7 +150,7 @@ objects:
       tls:
         termination: edge
         insecureEdgeTerminationPolicy: Redirect    
-      path: '/petclinic'   
+      path: ''   
   - apiVersion: v1
     kind: Secret
     metadata:
