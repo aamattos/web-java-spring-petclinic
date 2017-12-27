@@ -5,7 +5,8 @@ openshiftPipeline{
 		
 		templateName = "petclinic"
 		templatePath = "openshift/petclinic.yml"
-		targetDev = ["alm-petclinic"]
+		targetDev = ["alm-petclinic-dev"]
+		targetPro = ["alm-petclinic"]
 		
 		paramsPath = [:]
 		paramsPath["alm-petclinic"] = "openshift/params.yml"

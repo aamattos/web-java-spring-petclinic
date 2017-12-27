@@ -451,4 +451,51 @@
 		</plugins>
 	</build>
 	<url>demopetclinic</url>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+	        <build>
+	            <plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url>http://tomcat8.alm-petclinic-dev.svc:8080/manager/text</url>
+							<server>TomcatDevServer</server>
+							<username>jenkins</username>
+							<password>jenkins</password>
+						</configuration>
+					</plugin>
+	            </plugins>
+	        </build>			
+		</profile>
+		<profile>
+			<id>pro</id>
+			<activation>
+				<property>
+					<name>target</name>
+					<value>pro</value>
+				</property>				
+			</activation>
+	        <build>
+	            <plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url>http://tomcat8.alm-petclinic.svc:8080/manager/text</url>
+							<server>TomcatDevServer</server>
+							<username>jenkins</username>
+							<password>jenkins</password>
+						</configuration>
+					</plugin>
+	            </plugins>
+	        </build>			
+		</profile>
+	</profiles>
 </project>
