@@ -1,5 +1,5 @@
 ---
-project_name: alm-petclinic
+project_name: alm-petclinic-dev
 app_name: petclinic
 tomcat_image: 172.30.254.171:5000/alm-registry/tomcat8-totta:1.0.1-RELEASE
 mysql_image: centos/mysql-57-centos7
