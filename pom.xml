@@ -437,17 +437,6 @@
 			<!-- <plugin> <groupId>org.apache.tomcat.maven</groupId> <artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.0</version> <configuration> <server>tomcat-development-server</server>
 				<port>9966</port> <path>/petclinic</path> </configuration> </plugin> -->
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<url>http://tomcat8.alm-petclinic.svc:8080/manager/text</url>
-					<server>TomcatDevServer</server>
-					<username>jenkins</username>
-					<password>jenkins</password>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 	<url>demopetclinic</url>
