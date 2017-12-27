@@ -25,13 +25,21 @@ import pt.alm.util.pipeline.DistributionProfile
 					mavenPipeline.publish(DistributionProfile.LOCAL)
 				}
 
-				stage ('Deploy'){
+				stage ('Deploy in Dev'){
 
 					// Deploy app to Tomcat
 					mavenPipeline.deployTomcat()
 
 				}
 
+				stage ('Deploy in Pro'){
+					
+					// Deploy app to Tomcat
+					mavenPipeline.deployTomcat("pro")
+					
+				}
+					
+				
 			}
 
 
