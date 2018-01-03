@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <node name="www1.anvils.com" description="A www server node." tags="www" 
+    hostname="192.168.50.2" username="www1" 
+    osFamily="unix" osName="Linux">
+    <attribute name="anvils-location" value="US-East"/>
+    <attribute name="anvils-customer" value="acme.com"/>
+  </node>
+  <node name="www2.anvils.com" description="A www server node." tags="www" 
+    hostname="192.168.50.2" username="www2" 
+    osFamily="unix" osName="Linux">
+    <attribute name="anvils-location" value="US-East"/>
+    <attribute name="anvils-customer" value="acme.com"/>
+  </node>
+  <node name="app1.anvils.com" description="A app server node." tags="app" 
+    hostname="192.168.50.2" username="app1" 
+    osFamily="unix" osName="Linux"> 
+    <attribute name="anvils-location" value="US-East"/>
+    <attribute name="anvils-customer" value="acme.com"/>
+  </node>
+  <node name="app2.anvils.com" description="A app server node." tags="app" 
+    hostname="192.168.50.2" username="app2" 
+    osFamily="unix" osName="Linux"> 
+    <attribute name="anvils-location" value="US-East"/>
+    <attribute name="anvils-customer" value="acme.com"/>
+  </node>
+  <node name="db1.anvils.com" description="A db server node." tags="db" 
+    hostname="192.168.50.2" username="db" 
+    osFamily="unix" osName="Linux"> 
+    <attribute name="anvils-location" value="US-East"/>
+    <attribute name="anvils-customer" value="acme.com"/>
+  </node>
+</project>
