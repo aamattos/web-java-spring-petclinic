@@ -49,6 +49,8 @@ objects:
                 - name: http
                   containerPort: 8080
                   protocol: TCP
+          nodeSelector:
+            node-id: node-1
       triggers:
         - type: ConfigChange
   - apiVersion: v1
@@ -127,6 +129,8 @@ objects:
                   name: 'tomcat8-mysql-data'
           dnsPolicy: ClusterFirst
           restartPolicy: Always
+          nodeSelector:
+            node-id: node-1
           volumes:
             - emptyDir:
                 medium: ''
