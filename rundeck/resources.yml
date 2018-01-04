@@ -1,12 +1,20 @@
 ---
-www1.anvils.com:
-  description: A www server node.
-  hostname: 192.168.50.2
-  nodename: www1.anvils.com
+tomcat8.alm-petclinic-dev:
+  description: Petclinic Dev Tomcat.
+  hostname: 172.30.100.58
+  nodename: tomcat8.alm-petclinic-dev.svc
   osArch: x86_64
   osFamily: unix
   osName: Linux
-  tags: 'www,production'
-  username: www1
-  anvils-location: US-East
-  anvils-customer: acme.com
+  tags: 'www,dev'
+  username: jenkins
+  
+tomcat8.alm-petclinic-pro:
+  description: Petclinic Pro Tomcat.
+  hostname: 172.30.101.65
+  nodename: tomcat8.alm-petclinic.svc
+  osArch: x86_64
+  osFamily: unix
+  osName: Linux
+  tags: 'www,pro'
+  username: jenkins  
