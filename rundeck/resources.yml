@@ -1,0 +1,12 @@
+---
+www1.anvils.com:
+  description: A www server node.
+  hostname: 192.168.50.2
+  nodename: www1.anvils.com
+  osArch: x86_64
+  osFamily: unix
+  osName: Linux
+  tags: 'www,production'
+  username: www1
+  anvils-location: US-East
+  anvils-customer: acme.com
