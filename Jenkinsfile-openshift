@@ -1,3 +1,6 @@
+@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
+
+def paramsDev = readYaml file: "openshift/params-dev.yml"
 
 openshiftPipeline{
 	
@@ -5,10 +8,6 @@ openshiftPipeline{
 		
 		templateName = "petclinic"
 		templatePath = "openshift/petclinic.yml"
-		targetDev = ["alm-petclinic-dev"]
-		targetPro = ["alm-petclinic"]
-		
-		paramsPath = [:]
-		paramsPath["alm-petclinic-dev"] = "openshift/params-dev.yml"
-		paramsPath["alm-petclinic"] = "openshift/params.yml"
+		target = "alm-petclinic-dev"
+		params =  paramsDev
 }
