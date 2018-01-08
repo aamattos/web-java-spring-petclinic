@@ -17,3 +17,5 @@ node('openshift') {
 	openshiftPipeline.applyTemplate(authToken, target, templateName, templatePath, params)
 	
 }
+
+
