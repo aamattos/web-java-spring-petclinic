@@ -9,12 +9,11 @@ node('openshift') {
 	}
 	
 	def authToken = "petclinic-openshift-token"
-	
 	def templateName = "petclinic"
 	def templatePath = "openshift/petclinic.yml"
 	def target = "alm-petclinic-dev"
 	def params =  readYaml file: "openshift/params-dev.yml"
 
-	openshiftPipeline.applyTemplate(authToken, config.target, templateName, templatePath, params)
+	openshiftPipeline.applyTemplate(authToken, target, templateName, templatePath, params)
 	
 }
