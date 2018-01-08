@@ -35,7 +35,11 @@ objects:
           serviceAccount: alm-totta
           terminationGracePeriodSeconds: 60
           containers:
-            - name: tomcat8
+            - capabilities: {}
+              env:
+                - name: PETCLINIC_WAR_URL
+                  value: "${petclinic_war_url}"
+              name: tomcat8
               image: "${tomcat_image}"
               imagePullPolicy: Always
               readinessProbe:
@@ -213,6 +217,9 @@ parameters:
     description: Application Name
     value: "petclinic"    
     required: true
+  - name: petclinic_war_url
+    displayName: Petclinic War URL
+    description: Petclinic War URL    
   - name: tomcat_image
     displayName: Tomcat Image
     description: Tomcat Image
