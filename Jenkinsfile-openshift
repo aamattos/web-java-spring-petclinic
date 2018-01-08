@@ -1,11 +1,20 @@
 @Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
 
-openshiftPipeline{
+//DEVELOP PIPELINE
+node('openshift') {
+
+	stage("checkout") {
+		checkout scm
+		stash name: 'develop', useDefaultExcludes: false
+	}
 	
-		authToken = "petclinic-openshift-token"
-		
-		templateName = "petclinic"
-		templatePath = "openshift/petclinic.yml"
-		target = "alm-petclinic-dev"
-		params =  readYaml file: "openshift/params-dev.yml"
+	def authToken = "petclinic-openshift-token"
+	
+	def templateName = "petclinic"
+	def templatePath = "openshift/petclinic.yml"
+	def target = "alm-petclinic-dev"
+	def params =  readYaml file: "openshift/params-dev.yml"
+
+	openshiftPipeline.applyTemplate(authToken, config.target, templateName, templatePath, params)
+	
 }
