@@ -2,7 +2,7 @@
 project_name: alm-petclinic
 app_name: petclinic
 petclinic_war_url: https://nexus-alm-dev.paas.totta.dev.corp/repository/maven-snapshots/org/springframework/samples/petclinic/1.0.0-SNAPSHOT/petclinic-1.0.0-20180108.160134-40.war
-tomcat_image: 172.30.254.171:5000/alm-registry/tomcat8-totta:1.0.2-SNAPSHOT
+tomcat_image: 172.30.254.171:5000/alm-registry/tomcat8-totta:1.0.2-RELEASE
 mysql_image: centos/mysql-57-centos7
 mysql_user: petclinic
 mysql_password: password
