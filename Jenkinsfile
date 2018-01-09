@@ -6,7 +6,6 @@ import pt.alm.dashboard.model.*
 
 try{
 		def authToken = "petclinic-openshift-token"
-		def templateName = "petclinic"
 		def templatePath = "openshift/petclinic.yml"
 		def devTarget = "alm-petclinic-dev"
 		def proTarget = "alm-petclinic"
@@ -30,10 +29,8 @@ try{
 			
 			stage ('Publish'){
 				
-				mavenPipeline.publish(DistributionProfile.LOCAL)
+				petclinic_war_url = mavenPipeline.publish(DistributionProfile.LOCAL)
 				
-				//TODO OBTER DO PUBLISH
-				petclinic_war_url =  "https://nexus-alm-dev.paas.totta.dev.corp/repository/maven-snapshots/org/springframework/samples/petclinic/1.0.0-SNAPSHOT/petclinic-1.0.0-20180108.160134-40.war"
 			}
 
 		}
@@ -48,7 +45,7 @@ try{
 			def params =  readYaml file: "openshift/params-dev.yml"
 		    params.petclinic_war_url =  "${petclinic_war_url}"
 
-			openshiftPipeline.applyTemplate(authToken, devTarget, templateName, templatePath, params)
+			openshiftPipeline.applyTemplate(authToken, devTarget, templatePath, params)
 			
 		}
 
