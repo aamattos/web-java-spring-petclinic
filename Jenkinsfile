@@ -27,7 +27,8 @@ try{
 			
 			stage ('Publish'){
 				
-				petclinic_war_url = mavenPipeline.publish(DistributionProfile.LOCAL)
+				def versions = mavenPipeline.publish(DistributionProfile.LOCAL)
+				petclinic_war_url = versions.war
 				
 			}
 			
