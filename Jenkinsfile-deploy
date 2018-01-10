@@ -11,6 +11,13 @@ try{
 			
 			def petclinic_war_url
 			
+			stage("Checkout") {
+				
+				// Clone the project from Git, checkout the branch configured in Jenkins
+				checkout scm
+
+			}
+			
 			stage ('Get Latest Snapshots'){
 				
 				def versions = mavenPipeline.getLastUploadedArtifactSnapshotVersions("org.springframework.samples", "petclinic", DistributionProfile.LOCAL)
