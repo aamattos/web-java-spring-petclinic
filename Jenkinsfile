@@ -27,6 +27,11 @@ try{
 				mavenPipeline.publish(DistributionProfile.LOCAL)
 			}
 			
+			stage ('Deploy'){
+				
+				build "deploy"
+			}
+			
 
 		}
 		
