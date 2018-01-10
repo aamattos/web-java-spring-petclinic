@@ -1,0 +1,46 @@
+@Library(['alm-totta-platform-library@develop', 'alm-totta-commons-library@develop', 'alm-totta-maven-library@develop']) _
+
+import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
+import pt.alm.util.pipeline.DistributionProfile
+import pt.alm.dashboard.model.*
+
+try{
+
+		//DEVELOP PIPELINE
+		node('maven') {
+			
+			def petclinic_war_url
+			
+			stage ('Get Latest Snapshots'){
+				
+				def versions = mavenPipeline.getLastUploadedArtifactSnapshotVersions("org.springframework.samples", "petclinic", DistributionProfile.LOCAL)
+				petclinic_war_url = versions.war
+				
+			}
+			
+			stage ('Deploy in Dev'){
+		
+				def authToken = "petclinic-openshift-token"
+				def templatePath = "openshift/petclinic.yml"
+				def params =  readYaml file: "openshift/params-dev.yml"
+
+				params.petclinic_war_url =  "${petclinic_war_url}"
+				
+				openshiftPipeline.applyTemplate(authToken, "alm-petclinic-dev", templatePath, params)
+				
+			}
+			
+
+		}
+		
+
+
+}catch(FlowInterruptedException exc){
+
+	print "Flow Canceled"
+
+}finally{
+
+}
+
+
