@@ -3,6 +3,7 @@
 import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 import pt.alm.util.pipeline.DistributionProfile
 import pt.alm.dashboard.model.*
+import pt.alm.util.pipeline.NexusRepository
 
 try{
 
@@ -20,9 +21,11 @@ try{
 			
 			stage ('Get Latest Snapshots'){
 				
-				def versions = mavenPipeline.getLastUploadedArtifactSnapshotVersions("org.springframework.samples", "petclinic", DistributionProfile.LOCAL)
-				petclinic_war_url = versions.war
-				
+				petclinic_war_url = mavenPipeline.getLastUploadedArtifactURL(NexusRepository.MAVEN_SNAPSHOTS_REPO, 
+					                                                                                              "org.springframework.samples", 
+																												  "petclinic", 
+																												  "war",
+																												  DistributionProfile.LOCAL)
 			}
 			
 			stage ('Deploy in Dev'){
