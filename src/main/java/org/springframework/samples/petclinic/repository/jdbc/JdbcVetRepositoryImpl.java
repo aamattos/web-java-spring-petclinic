@@ -56,8 +56,7 @@ public class JdbcVetRepositoryImpl implements VetRepository {
 
     /**
      * Refresh the cache of Vets that the ClinicService is holding.
-     *
-     * @see org.springframework.samples.petclinic.model.service.ClinicService#findVets()
+     * @see org.springframework.samples.petclinic.service.ClinicService#findVets()
      */
     @Override
     public Collection<Vet> findAll() throws DataAccessException {
