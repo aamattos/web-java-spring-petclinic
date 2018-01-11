@@ -24,7 +24,7 @@ try{
 			
 			stage ('Publish'){
 				
-				mavenPipeline.publish(DistributionProfile.LOCAL)
+				mavenPipeline.publish()
 			}
 			
 			stage ('Deploy'){

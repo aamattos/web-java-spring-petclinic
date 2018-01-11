@@ -21,11 +21,10 @@ try{
 			
 			stage ('Get Latest Snapshots'){
 				
-				petclinic_war_url = nexusRepository.getLatestArtifactAssetURL(NexusRepositories.MAVEN_SNAPSHOTS, 
+				petclinic_war_url = nexus.getLatestArtifactAssetURL(NexusRepository.MAVEN_SNAPSHOTS, 
 					                                                                                              "org.springframework.samples", 
 																												  "petclinic", 
-																												  "war",
-																												  DistributionProfile.LOCAL)
+																												  "war")
 			}
 			
 			stage ('Deploy in Dev'){
