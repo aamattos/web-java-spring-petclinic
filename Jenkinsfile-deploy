@@ -20,9 +20,13 @@ try{
 			
 			stage ('Get Latest Snapshots'){
 				
+				def pom = readMavenPom file: "pom.xml"
+				def groupId = pom.groupId?pom.groupId:pom.parent.groupId
+				def artifactId = pom.artifactId?pom.artifactId:pom.parent.artifactId
+				
 				petclinic_war_url = nexus.getLatestArtifactAssetURL(NexusRepository.MAVEN_SNAPSHOTS, 
-					                                                                                              "org.springframework.samples", 
-																												  "petclinic", 
+					                                                                                              groupId, 
+																												  artifactId, 
 																												  "war")
 			}
 			
