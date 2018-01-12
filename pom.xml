@@ -487,11 +487,5 @@
 		</profile>
 	</profiles>
 	
-	<scm>
-	   <connection>scm:git:ssh://git@devos.alm.totta.dev.corp:32122/alm-totta-public/web-java-spring-petclinic.git</connection>
-	   <url>https://gitlab-ce-scm.paas.totta.dev.corp/alm-totta-public/web-java-spring-petclinic</url>
-	   <developerConnection>scm:git:ssh://git@devos.alm.totta.dev.corp:32122/alm-totta-public/web-java-spring-petclinic.git</developerConnection>
-	  <tag>petclinic-1.0.1</tag>
-  </scm>
 	
 </project>
