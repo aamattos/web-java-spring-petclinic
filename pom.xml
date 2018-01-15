@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples</groupId>
 	<artifactId>petclinic</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 
 	<name>petclinic</name>
 	<packaging>war</packaging>
@@ -489,6 +489,7 @@
 
 	<scm>
 	   <connection>scm:git:ssh://git@devos.alm.totta.dev.corp:32122/alm-totta-public/web-java-spring-petclinic.git</connection>
-   </scm>
+     <tag>HEAD</tag>
+  </scm>
 	
 </project>
