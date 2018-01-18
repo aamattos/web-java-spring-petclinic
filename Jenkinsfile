@@ -9,6 +9,8 @@ try{
 		node('maven-ephemeral') {
 			
 			stage("Checkout") {
+				
+				sh "git config --global http.sslVerify false"
 
 				// Clone the project from Git, checkout the branch configured in Jenkins
 				mavenPipeline.checkout()
