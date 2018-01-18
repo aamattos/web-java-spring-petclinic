@@ -6,7 +6,7 @@ import pt.alm.dashboard.model.*
 try{
 	
 		//DEVELOP PIPELINE
-		node('maven-ephemeral') {
+		node('maven') {
 			
 			stage("Checkout") {
 				
